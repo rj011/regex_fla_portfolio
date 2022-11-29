@@ -1,0 +1,13 @@
+import re
+
+N = int(input())
+data = ''
+for _ in range(N):
+    data+= input() + ' '
+    
+T = int(input())
+for _ in range(T):
+    uk = input()
+    us = re.sub('our','or',uk)
+    m = re.findall(f'({uk}|{us})\s',data)
+    print(len(m))
