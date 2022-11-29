@@ -1,0 +1,19 @@
+import re
+from collections import defaultdict
+
+N = int(input())
+ans = defaultdict(set)
+for _ in range(N):
+    data = input()
+    tag_with_attr = re.findall(r"((?<=<)\w+)?\s(\w+(?==))",data)
+    tag_without_attr = re.findall(r"(?<=<)\w+(?=>)",data)
+    key = ''
+    for tag,attr in tag_with_attr:
+        if(tag): key = tag        
+        ans[key].add(attr)
+
+    for tag in tag_without_attr:
+        ans[tag].add('')
+    
+for item in sorted(ans):
+    print(item+':'+','.join(sorted(ans[item])))
