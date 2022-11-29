@@ -1,0 +1,9 @@
+import re
+
+n = int(input())
+texts = " ".join(input() for _ in range(n))
+
+for _ in range(int(input())):
+    amer = input()
+    eng = re.sub("ze$", "se" , amer)
+    print(len(re.findall(f"({amer}|{eng})", texts)))
