@@ -1,0 +1,10 @@
+import re, sys
+
+id_regex = re.compile(r"question-summary-(\d+)")
+q_regex = re.compile(r"question-hyperlink\">(.+?)<")
+date_regex = re.compile(r"relativetime\">(.*?)<")
+
+text = sys.stdin.read()
+
+for i in zip(id_regex.findall(text),q_regex.findall(text),date_regex.findall(text)):
+    print(";".join(i))
